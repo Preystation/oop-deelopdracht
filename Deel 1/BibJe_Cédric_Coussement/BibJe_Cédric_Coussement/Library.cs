@@ -8,5 +8,6 @@ namespace BibJe_Cédric_Coussement
 {
     internal class Library
     {
+        
     }
 }
