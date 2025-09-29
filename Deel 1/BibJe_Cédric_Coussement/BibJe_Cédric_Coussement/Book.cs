@@ -8,35 +8,91 @@ namespace BibJe_Cédric_Coussement
 {
     internal class Book
     {
-        enum Genres {
-            Avontuur,Fantasy,Historische_fictie,
-            Humor,Sciencefiction,Thriller, 
-            Politiek,Gezondheid,
-            Religie_Spiritualiteit,leerboeken }
+        public enum Genres
+        {
+            Avontuur,
+            Fantasy,
+            HistorischeFictie,
+            Humor,
+            Sciencefiction,
+            Thriller,
+            Politiek,
+            Gezondheid,
+            ReligieSpiritualiteit,
+            Leerboeken
+        }
+        //  8 Propertys
+        /*
+       1 title;
+       2 author,
+       3 Genre,
+       4 IsbnNumber,
+       5 Releaseyear,
+       6 id
+       7 PageAmount
+       8 Publisher
+         */
 
-        private string title { get; set; }
-        private Genres genre { get; set; }
-        private string author { get; set; }
-        private int isbnNumber { get; set; }
-        private int pageAmount { get; set; }
+        //private fields
+        private int id;
+        private string title;
+        private string author;
+        private Genres genre;
+        private int isbnNumber;
+        private DateTime releaseDate;
+        private string publisher;
+        private string pageAmount;
 
-        private DateTime releaseYear { get; set; }
-        private string publisher { get; set; }
 
-        private bool isLentOut { get; set; }
 
-        public Book(
-            string title, Genres genre, string author, int isbnNumber, int pageAmount, 
-            DateTime releaseYear, string publisher, bool isLentOut)
+        public string Title
+        {
+            get 
+            {
+                return title;
+            } 
+            private set
+            {
+                if(value is not null)
+                {
+                    title = value;
+                }
+            }
+        }
+
+        public int Id;
+        public string Author 
+        { 
+            get
+            {
+                return author;
+            }
+         set
+            {
+
+            }
+        }
+        public Genres Genre { get; set; }
+        public int IsbnNumber { get; set; }
+        public DateTime ReleaseDate { get; set; }
+        public string Publisher { get; set; }
+        public int PageAmount { get; set; }
+
+
+        // Constructor
+        public Book(string title,string author,Library library)
         {
             this.title = title;
-            this.genre = genre;
             this.author = author;
-            this.isbnNumber = isbnNumber;
-            this.pageAmount = pageAmount;
-            this.releaseYear = releaseYear;
-            this.publisher = publisher;
-            this.isLentOut = isLentOut;
+            library.AddBook(this);
         }
+
+        //Methodes
+
+        public void ShowOverview()
+        {
+            
+        }
+
     }
 }
