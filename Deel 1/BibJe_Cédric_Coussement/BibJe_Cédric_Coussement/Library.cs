@@ -32,22 +32,26 @@ namespace BibJe_Cédric_Coussement
         }
         public void SearchingOnTitelAndAuthor()
         {
-            Console.WriteLine("Geef de naam van het book");
+            Console.WriteLine("Geef de naam van het boek:");
             string bookTitle = Console.ReadLine();
-            Console.WriteLine("Geef de naam van de autheur");
+            Console.WriteLine("Geef de naam van de auteur:");
             string author = Console.ReadLine();
 
+            bool found = false;
             foreach (Book book in books)
-            
+            {
                 if (book.Title == bookTitle && book.Author == author)
                 {
                     Console.WriteLine($"Gevonden: {book.Title} door {book.Author}");
-                    // extra functionaliteit moet hier nog komen
+                    book.ShowOverview(); 
+                    found = true;
+                    break; 
                 }
-                else
-                {
-                    Console.WriteLine("Boek is niet gevonden");
-                }
+            }
+            if (!found)
+            {
+                Console.WriteLine("Boek is niet gevonden.");
+            }
             Console.ReadKey();
         }
 
@@ -87,6 +91,7 @@ namespace BibJe_Cédric_Coussement
                 Console.WriteLine($"{col0}, {col1}");
 
                 Book newBook = new Book(col0, col1, library);
+                Console.WriteLine("csv opgeladen.");
             }
         }
     }
